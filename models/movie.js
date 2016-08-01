@@ -21,7 +21,7 @@ function Movie (data) {
 Movie.fetch = function(options, callback) {
   let queryOptions = {
     order: 'title ASC',
-    limit: options.size || 10
+    limit: options.size || 100
   }
 
   if (options.page) {
