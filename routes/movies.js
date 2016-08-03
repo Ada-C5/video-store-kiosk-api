@@ -1,7 +1,7 @@
 let router = require('express').Router()
 let Controller = require('../controllers/movies')
 
-router.get('/', function (req, res) {
+router.get('/movies', function (req, res) {
   Controller.getAll(req.query, res.apiRespond)
 })
 
