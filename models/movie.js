@@ -3,9 +3,18 @@ const db = app.get('db')
 
 // constructor
 function Movie (data) {
-  for (let key of Object.keys(data)) {
-    this[key] = data[key]
-  }
+  // for (let key of Object.keys(data)) {
+    // this[key] = data[key]
+    this.id = data['id'],
+    this.type = 'movies',
+    this.attributes = {
+    title: data['title'],
+    overview: data['overview'],
+    release_date: data['release_date'],
+    inventory: data['inventory'],
+    poster_filename: data['poster_filename']
+ }
+  // }
 }
 
 // class methods
@@ -22,7 +31,9 @@ Movie.fetch = function(options, callback) {
   db.movies.find({}, queryOptions, function (error, results) {
     if (error) { callback(error, undefined); return }
     let movies = results.map(function(data) { return new Movie(data) })
-    callback(null, movies)
+    var hsh = {}
+    hsh["data"] = movies
+    callback(null, hsh)
   })
 }
 
