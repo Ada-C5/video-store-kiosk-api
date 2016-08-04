@@ -22,7 +22,7 @@ app.use(function (req, res, next) {
       res.status(500).json({error: error.message})
     } else {
       if (!data || !Object.keys(data).length) res.status(204)
-      res.json(data)      
+      res.json(data)
     }
   }
   next()
