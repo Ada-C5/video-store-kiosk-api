@@ -21,7 +21,7 @@ Movie.fetch = function(options, callback) {
 
   db.movies.find({}, queryOptions, function (error, results) {
     if (error) { callback(error, undefined); return }
-    let movies = results.map(function(data) { return new Movie(data) })
+    let movies = {movies: results.map(function(data) { return new Movie(data) })}
     callback(null, movies)
   })
 }
